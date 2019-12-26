@@ -1,0 +1,41 @@
+﻿@model HomeDetailsViewodel
+
+@{
+    ViewBag.Title = Model.title;
+    var image = "~/images/" + (Model.Employee.PhotoPath ?? "Yeswanth_IrionMan.jpg");
+}
+
+<div class="row justify-content-center m-3">
+    <div class="col-sm-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>@Model.Employee.Lname</h1>
+            </div>
+            <div class="card-body text-center">
+                <img class="card-img-top" src="@image" asp-append-version="true" />
+
+                <h4>Employee ID : @Model.Employee.ID</h4>
+                <h4>Email : @Model.Employee.Email</h4>
+                <h4>Department : @Model.Employee.Department</h4>
+
+            </div>
+            <div class="card-footer text-center">
+                <a asp-controller="Home" asp-action="index" class="btn btn-primary m-1">Back</a>
+                <a asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Employee.ID" class="btn btn-primary m-1">Edit</a>
+                <a href="#" class="btn btn-danger m-1">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".custom-file-input").on("change", function () {
+                var filename = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(filename);
+            });
+        });
+    </script>
+    <script src="~/js/CustomScript.js"></script>
+}
