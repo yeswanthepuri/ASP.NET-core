@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using EmployManagment.core.DataContext;
 using EmployManagment.core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,7 +39,15 @@ namespace EmployManagment.core
             })
                 .AddEntityFrameworkStores<AppDbContext>();
 
-            services.AddMvc();
+            services.AddMvc(config=> {
+                //This Peace of middle where tell all the users require acces to use any page of our application
+                //so please make log in and register as Anonomious to avoide any further issues.
+                var policy = new AuthorizationPolicyBuilder()
+                                .RequireAuthenticatedUser()
+                                .Build();
+
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
 

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EmployManagment.core.Models;
 using EmployManagment.core.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +38,7 @@ namespace EmployManagment.core.Controllers
             return View(employ);
         }
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -57,6 +59,7 @@ namespace EmployManagment.core.Controllers
             return uniquefilename;
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Create(EmployeeCreateViewModel model)
         {
             if (ModelState.IsValid)
@@ -69,6 +72,7 @@ namespace EmployManagment.core.Controllers
             return View(model);
         }
         [HttpGet]
+        [Authorize]
         public IActionResult Edit(Guid id)
         {
             Employee emp = repo.getEmployeebyID(id).Employee;
@@ -84,6 +88,7 @@ namespace EmployManagment.core.Controllers
             return View(empEdit);
         }
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(EmployeeEditViewModel model)
         {
             if (ModelState.IsValid)

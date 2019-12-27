@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployManagment.core.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly UserManager<IdentityUser> userManager;
