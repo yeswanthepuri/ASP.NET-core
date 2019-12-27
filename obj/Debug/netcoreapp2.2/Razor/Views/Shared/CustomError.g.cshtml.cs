@@ -23,8 +23,13 @@ using EmployManagment.core.Models;
 
 #line default
 #line hidden
+#line 3 "C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venkat\EmployManagment.core\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c0c79c0d9a4627c0d17ec028a807f46315dda273", @"/Views/Shared/CustomError.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8e501450a0aee965576eb954d1f03e998e45f52a", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8bc1da921c4edda11c923c7a0c64b575651c3678", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_CustomError : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("href", new global::Microsoft.AspNetCore.Html.HtmlString("~/css/StyleSheet.css"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -68,7 +73,7 @@ using EmployManagment.core.Models;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(51, 53, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c0c79c0d9a4627c0d17ec028a807f46315dda2735548", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("link", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "c0c79c0d9a4627c0d17ec028a807f46315dda2735757", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -107,7 +112,7 @@ Write(ViewBag.ErrorMessage);
             WriteLiteral("\r\n</h1>\r\n");
             EndContext();
             BeginContext(223, 98, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c0c79c0d9a4627c0d17ec028a807f46315dda2737646", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c0c79c0d9a4627c0d17ec028a807f46315dda2737855", async() => {
                 BeginContext(295, 22, true);
                 WriteLiteral("Go Back to home Screen");
                 EndContext();

@@ -2976,8 +2976,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\us50783\\Documents\\Visual Studio 2017\\Projects\\WelcometoDotnetCore_venkat\\EmployManagment.core\\Views\\Account\\Register.cshtml",
+      "TargetPath": "Views\\Account\\Register.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\us50783\\Documents\\Visual Studio 2017\\Projects\\WelcometoDotnetCore_venkat\\EmployManagment.core\\Views\\Home\\Detail.cshtml",
       "TargetPath": "Views\\Home\\Detail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\us50783\\Documents\\Visual Studio 2017\\Projects\\WelcometoDotnetCore_venkat\\EmployManagment.core\\Views\\Account\\LogIn.cshtml",
+      "TargetPath": "Views\\Account\\LogIn.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -46,7 +46,7 @@ namespace EmployManagment.core.Controllers
                 {
                     foreach (var item in resultUser.Errors)
                     {
-                        ModelState.AddModelError("",item.Description);
+                        ModelState.AddModelError("", item.Description);
                     }
                 }
             }
@@ -56,8 +56,27 @@ namespace EmployManagment.core.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
-          await signInManager.SignOutAsync();
+            await signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+        [HttpGet]
+        public IActionResult LogIn()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> LogIn(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await signInManager.PasswordSignInAsync(model.UserName, model.Password, model.Rememberme, true);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("index", "home");
+                }
+                ModelState.AddModelError("", "Invalid User Name or Password..!");
+            }
+            return View(model);
         }
     }
 }
