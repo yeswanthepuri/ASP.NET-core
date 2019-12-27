@@ -66,13 +66,19 @@ namespace EmployManagment.core.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> LogIn(LoginViewModel model)
+        public async Task<IActionResult> LogIn(LoginViewModel model,string returnUrl)
         {
             if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(model.UserName, model.Password, model.Rememberme, true);
                 if (result.Succeeded)
                 {
+                    //check for Url.IsLocalUrl(returnUrl) before redirecting
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        //UseLocalredirect(returnUrl) for keeping users from other kinds of attacks.
+                        return Redirect(returnUrl);
+                    }
                     return RedirectToAction("index", "home");
                 }
                 ModelState.AddModelError("", "Invalid User Name or Password..!");
