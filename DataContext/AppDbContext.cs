@@ -1,4 +1,5 @@
 ﻿using EmployManagment.core.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployManagment.core.DataContext
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> dbContextOptions)
             : base(dbContextOptions)
@@ -18,6 +19,7 @@ namespace EmployManagment.core.DataContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
            // modelBuilder.seed();
         }
     }

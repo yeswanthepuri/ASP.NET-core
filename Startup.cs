@@ -7,6 +7,7 @@ using EmployManagment.core.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,10 @@ namespace EmployManagment.core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<AppDbContext>(option => option.UseSqlServer(_Config.GetConnectionString("EmployeeDBConnection")));
+
+            services.AddIdentity<IdentityUser,IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+
             services.AddMvc();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
@@ -44,6 +49,8 @@ namespace EmployManagment.core
                 app.UseExceptionHandler("/Error");
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
+            app.UseAuthentication();
+
             app.UseStaticFiles();
             app.UseMvc((rout) => { rout.MapRoute("default", "{controller=Home}/{action=index}/{id?}"); });
         }
