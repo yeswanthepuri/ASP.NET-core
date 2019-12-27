@@ -29,7 +29,12 @@ namespace EmployManagment.core
         {
             services.AddDbContextPool<AppDbContext>(option => option.UseSqlServer(_Config.GetConnectionString("EmployeeDBConnection")));
 
-            services.AddIdentity<IdentityUser,IdentityRole>()
+            services.AddIdentity<IdentityUser,IdentityRole>(option => {
+                option.Password.RequiredLength = 10;
+                option.Password.RequiredUniqueChars = 3;
+                option.Password.RequireNonAlphanumeric = false;
+
+            })
                 .AddEntityFrameworkStores<AppDbContext>();
 
             services.AddMvc();
