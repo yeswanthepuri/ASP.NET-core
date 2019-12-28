@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EmployManagment.core.DataContext
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> dbContextOptions)
             : base(dbContextOptions)
