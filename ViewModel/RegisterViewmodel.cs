@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EmployManagment.core.Utlities;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,6 +13,7 @@ namespace EmployManagment.core.ViewModel
         [Required]
         [EmailAddress]
         [Remote(action: "IsExistingEmail", controller: "Account")]
+        [ValidEmailDomain(allowedeDomain: "gmail.com",ErrorMessage ="Email Domain Must be Gmail.com only.")]
         public string Email { get; set; }
 
         [Required]
