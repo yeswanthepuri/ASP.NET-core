@@ -2,26 +2,11 @@
 @{
     ViewData["Title"] = "HttpStatusCodeHandler";
 }
-<link href="~/css/StyleSheet.css" rel="stylesheet" />
-<figure>
-    <div class="sad-mac"></div>
-    <figcaption>
-        <span class="sr-text">Error Code @ViewBag.ErrorCode: Not Found</span>
-        <span class="e"></span>
-        <span class="r"></span>
-        <span class="r"></span>
-        <span class="o"></span>
-        <span class="r"></span>
-        <span class="n"></span>
-        <span class="o"></span>
-        <span class="t"></span>
-        <span class="f"></span>
-        <span class="o"></span>
-        <span class="u"></span>
-        <span class="n"></span>
-        <span class="d"></span>
-    </figcaption>
-</figure>
+<div id="app">
+    <div>404</div>
+    <div class="txt">
+        Forbidden<span class="blink">_</span>
+    </div>
+</div>
+<link href="~/css/AccessDenied.css" rel="stylesheet" />
 <a asp-controller="Home" asp-action="index" class="btn btn-primary m-1">Go Back to home Screen</a>
-
-

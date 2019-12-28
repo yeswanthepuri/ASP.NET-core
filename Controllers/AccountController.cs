@@ -41,6 +41,10 @@ namespace EmployManagment.core.Controllers
                 var resultUser = await userManager.CreateAsync(user, model.Password);
                 if (resultUser.Succeeded)
                 {
+                    if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("ListUsers", "Administration");
+                    }
                     await signInManager.SignInAsync(user, false);
                     return RedirectToAction("Index", "Home");
                 }
@@ -97,6 +101,12 @@ namespace EmployManagment.core.Controllers
                 return Json(true);
             }
             return Json($"Email {email} already in use");
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
+            return View();
         }
     }
 }
