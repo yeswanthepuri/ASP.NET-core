@@ -15,6 +15,7 @@ namespace EmployManagment.core.Utlities
         {
             this.allowedeDomain = allowedeDomain;
         }
+        //this is used for validation
         public override bool IsValid(object value)
         {
             var emailSplited = value.ToString().Split('@');
