@@ -66,7 +66,7 @@ namespace EmployManagment.core.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> LogIn(LoginViewModel model,string returnUrl)
+        public async Task<IActionResult> LogIn(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -84,6 +84,18 @@ namespace EmployManagment.core.Controllers
                 ModelState.AddModelError("", "Invalid User Name or Password..!");
             }
             return View(model);
+        }
+
+        [AcceptVerbs("Get","Post")]
+        public async Task<IActionResult> IsExistingEmail(string email)
+        {
+            var user = await userManager.FindByEmailAsync(email);
+
+            if(user ==null)
+            {
+                return Json(true);
+            }
+            return Json($"Email {email} already in use");
         }
     }
 }
