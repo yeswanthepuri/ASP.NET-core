@@ -107,5 +107,64 @@ namespace EmployManagment.core.Controllers
                 return View(model);
             }
         }
+        [HttpGet]
+        public async Task<IActionResult> EditUserInRole(string roleId)
+        {
+            ViewBag.roleId = roleId;
+
+            var role = await roleManager.FindByIdAsync(roleId);
+            if (role == null)
+            {
+                return View("RecordNotFound");
+            }
+            var model = new List<UserRoleViewModel>();
+            foreach (var user in userManager.Users)
+            {
+                var UserRoleViewModel = new UserRoleViewModel()
+                {
+                    UserID = user.Id,
+                    UserName = user.UserName
+                };
+                if (await userManager.IsInRoleAsync(user, role.Name))
+                {
+                    UserRoleViewModel.IsSelcted = true;
+                }
+                else
+                {
+                    UserRoleViewModel.IsSelcted = false;
+                }
+                model.Add(UserRoleViewModel);
+            }
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditUserInRole(List<UserRoleViewModel> model,string roleId)
+        {
+            var role = await roleManager.FindByIdAsync(roleId);
+            if (role == null)
+            {
+                return View("RecordNotFound");
+            }
+
+            foreach (var user in model)
+            {
+                var userinDB = await userManager.FindByIdAsync(user.UserID);
+
+                IdentityResult result = null;
+                if(user.IsSelcted && !(await userManager.IsInRoleAsync(userinDB,role.Name)))
+                {
+                    result = await userManager.AddToRoleAsync(userinDB, role.Name);
+                }
+                else if(!user.IsSelcted && await userManager.IsInRoleAsync(userinDB, role.Name))
+                {
+                    result = await userManager.RemoveFromRoleAsync(userinDB, role.Name);
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            return RedirectToAction("EditRole", new { id = roleId });
+        }
     }
 }
