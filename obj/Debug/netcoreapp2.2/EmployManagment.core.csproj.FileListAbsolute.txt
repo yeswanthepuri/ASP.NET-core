@@ -34,3 +34,5 @@ C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venka
 C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venkat\EmployManagment.core\obj\Debug\netcoreapp2.2\Razor\Views\_ViewImports.g.cshtml.cs
 C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venkat\EmployManagment.core\obj\Debug\netcoreapp2.2\Razor\Views\_ViewStart.g.cshtml.cs
 C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venkat\EmployManagment.core\obj\Debug\netcoreapp2.2\Razor\Views\Account\LogIn.g.cshtml.cs
+C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venkat\EmployManagment.core\obj\Debug\netcoreapp2.2\Razor\Views\Administration\CreateRole.g.cshtml.cs
+C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venkat\EmployManagment.core\obj\Debug\netcoreapp2.2\Razor\Views\Administration\ListofUserRoles.g.cshtml.cs

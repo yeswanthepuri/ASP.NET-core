@@ -42,7 +42,7 @@ namespace EmployManagment.core.Controllers
                 if (resultUser.Succeeded)
                 {
                     await signInManager.SignInAsync(user, false);
-                    RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -87,12 +87,12 @@ namespace EmployManagment.core.Controllers
             return View(model);
         }
 
-        [AcceptVerbs("Get","Post")]
+        [AcceptVerbs("Get", "Post")]
         public async Task<IActionResult> IsExistingEmail(string email)
         {
             var user = await userManager.FindByEmailAsync(email);
 
-            if(user ==null)
+            if (user == null)
             {
                 return Json(true);
             }
