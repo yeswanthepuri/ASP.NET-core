@@ -7,6 +7,7 @@ using EmployManagment.core.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployManagment.core.Controllers
 {
@@ -241,19 +242,29 @@ namespace EmployManagment.core.Controllers
             }
             else
             {
-                var result = await userManager.DeleteAsync(user);
-
-                if (result.Succeeded)
+                try
                 {
-                    return RedirectToAction("ListUsers");
-                }
+                    var result = await userManager.DeleteAsync(user);
 
-                foreach (var error in result.Errors)
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("ListUsers");
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+
+                    return View("ListUsers");
+                }
+                catch(DbUpdateException ex)
                 {
-                    ModelState.AddModelError("", error.Description);
-                }
+                    ViewBag.ErrorTitle = $"{user.UserName} user is in use";
+                    ViewBag.ErrorMessage = $"{user.UserName} user cannot be deleted as there are users in this role. If you want to delete this user, please remove the roles from the users and then try to delete";
 
-                return View("ListUsers");
+                    return View("CustomError");
+                }
             }
         }
         [HttpPost]
@@ -267,19 +278,29 @@ namespace EmployManagment.core.Controllers
             }
             else
             {
-                var result = await roleManager.DeleteAsync(role);
-
-                if (result.Succeeded)
+                try
                 {
-                    return RedirectToAction("ListofUserRoles");
-                }
+                    var result = await roleManager.DeleteAsync(role);
 
-                foreach (var error in result.Errors)
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("ListofUserRoles");
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+
+                    return View("ListofUserRoles");
+                }
+                catch(DbUpdateException ex)
                 {
-                    ModelState.AddModelError("", error.Description);
-                }
+                    ViewBag.ErrorTitle = $"{role.Name} role is in use";
+                    ViewBag.ErrorMessage = $"{role.Name} role cannot be deleted as there are users in this role. If you want to delete this role, please remove the users from the role and then try to delete";
 
-                return View("ListofUserRoles");
+                    return View("CustomError");
+                }
             }
         }
     }
