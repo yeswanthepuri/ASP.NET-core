@@ -40,3 +40,4 @@ C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venka
 C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venkat\EmployManagment.core\obj\Debug\netcoreapp2.2\Razor\Views\Administration\EditUserInRole.g.cshtml.cs
 C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venkat\EmployManagment.core\obj\Debug\netcoreapp2.2\Razor\Views\Account\AccessDenied.g.cshtml.cs
 C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venkat\EmployManagment.core\obj\Debug\netcoreapp2.2\Razor\Views\Administration\ListUsers.g.cshtml.cs
+C:\Users\us50783\Documents\Visual Studio 2017\Projects\WelcometoDotnetCore_venkat\EmployManagment.core\obj\Debug\netcoreapp2.2\Razor\Views\Administration\EditUser.g.cshtml.cs
